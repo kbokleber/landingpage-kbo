@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBO Soluções Tecnológicas - ITSM, Desenvolvimento e Integrações</title>
+    <meta name="description" content="KBO Soluções Tecnológicas - Empresa especializada em ITSM, desenvolvimento de software, automações com n8n e integrações entre sistemas. Transforme operações e acelere resultados com soluções sob medida.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #2563eb;
+            --cta-color: #f97316;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-light: #64748b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #eff6ff;
+            --border-color: #dbe5f0;
+            --shadow: 0 10px 25px -15px rgba(15, 23, 42, 0.35);
+            --shadow-lg: 0 22px 45px -22px rgba(30, 41, 59, 0.45);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 70%, #f8fafc 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(130deg, var(--text-primary) 0%, #27364b 48%, #334155 100%);
+            color: white;
+            padding: 2.75rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 68%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .company-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        .company-logo {
+            width: 320px;
+            height: 130px;
+            border-radius: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
+            padding: 2px;
+        }
+
+        .company-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .company-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-info .tagline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 0.45rem 0.7rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: var(--bg-accent);
+            color: var(--primary-color);
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(59, 130, 246, 0.35);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        /* Menu Hamburguer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 102;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .menu-toggle.active span {
+            background: var(--primary-color);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Social Proof Strip */
+        .trust-strip {
+            padding: 2rem 0 1rem;
+        }
+
+        .trust-kicker {
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .metric-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.1;
+            margin-bottom: 0.35rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 3rem 0 4rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ITSM Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tool-item .card {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tool-item .card-body {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100%;
+            height: 100%;
+            padding: 2rem !important;
+        }
+
+        .tool-brand-logo {
+            width: 100%;
+            max-width: 180px;
+            height: 56px;
+            object-fit: contain;
+            margin-bottom: 0.6rem;
+            filter: none !important;
+            opacity: 1;
+        }
+
+        .tool-logo-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-brand-logo.manageengine {
+            max-width: 185px;
+            height: 42px;
+        }
+
+        .tool-brand-logo.sysaid {
+            max-width: 155px;
+            height: 48px;
+            margin-bottom: 0;
+        }
+
+        .tool-brand-logo.servicenow {
+            max-width: 175px;
+            height: 44px;
+        }
+
+        .tool-brand-logo.cherwell {
+            max-width: 175px;
+            height: 48px;
+        }
+
+        .tool-brand-logo.fourbiz {
+            max-width: 165px;
+            height: 44px;
+        }
+
+        .tool-logo-badge.sysaid {
+            background: #0f172a;
+            border-radius: 10px;
+            padding: 0.35rem 0.75rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .tool-brand-logo.glpi {
+            max-width: 145px;
+            height: 48px;
+        }
+
+        .tool-brand-logo.n8n {
+            max-width: 150px;
+            height: 42px;
+        }
+        
+        .tool-item a:hover .card {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        }
+
+        .tool-item:hover {
+            background: var(--bg-primary);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .tool-logo {
+            width: 100%;
+            height: 80px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .tool-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilo específico para o logo da Aranda sem card */
+        .aranda-logo {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 2rem 0;
+            box-shadow: none;
+        }
+
+        .aranda-logo:hover {
+            background: none;
+            border: none;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .aranda-logo .tool-logo {
+            height: 120px;
+        }
+
+        .tool-item h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Qualifications Section */
+        .qualifications-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .founder-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .founder-info {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .founder-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-info .title {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .founder-info p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .qualification-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .qualification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .qualification-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .qualification-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .qualification-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .qualification-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .qualification-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .qualification-list li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .qualification-list li i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(140deg, #eff6ff 0%, #f8fafc 55%, #fff7ed 100%);
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+            border: 1px solid #dbeafe;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cta-color), #fb923c);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-accent);
+            border-color: var(--accent-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-stars {
+            color: #f59e0b;
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-quote {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .company-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .company-info h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .trust-strip {
+                padding-top: 1.5rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .qualifications-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .founder-info {
+                text-align: center;
+            }
+
+            /* Menu Mobile */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-content {
+                position: relative;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--bg-primary);
+                flex-direction: column;
+                gap: 0;
+                padding: 5rem 0 2rem 0;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+                margin: 0;
+                overflow-y: auto;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 1rem 1.5rem;
+                border-radius: 0;
+            }
+
+            .nav-links a:hover {
+                background: var(--bg-accent);
+                border-radius: 0;
+            }
+
+            /* Overlay para fechar o menu */
+            .nav-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+
+            .nav-overlay.active {
+                display: block;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .company-info h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .skill-card,
+            .service-card,
+            .qualification-card {
+                padding: 1.5rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+
+            .fade-in-up {
+                animation: none !important;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Estilo para logos dentro dos cards */
+        .logo-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-card:hover {
+            background: var(--bg-primary);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .logo-card .tool-logo {
+            width: 100%;
+            height: 100px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-card .tool-logo svg {
+            width: auto;
+            height: 100%;
+            max-width: 350px;
+        }
+
+        .logo-card .tool-logo svg.servicenow-logo {
+            height: 60px;
+            max-width: none;
+        }
+
+        .glpi-logo-card .tool-logo {
+            height: auto;
+            padding: 0.5rem 0;
+        }
+
+        .glpi-logo-card .tool-logo svg {
+            width: auto;
+            height: auto;
+            max-width: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="company-section">
+                    <div class="company-logo">
+                        <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Gradiente azul uniforme -->
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+                                </linearGradient>
+                                
+                                <!-- Gradiente secundário azul -->
+                                <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Design hexagonal moderno com K -->
+                            <g transform="translate(15, 25)">
+                                <!-- Hexágono principal -->
+                                <path d="M 30 5 L 55 5 L 67.5 30 L 55 55 L 30 55 L 17.5 30 Z" 
+                                      fill="url(#logoGradient)" 
+                                      stroke="url(#accentGradient)" 
+                                      stroke-width="2.5"
+                                      opacity="0.95"/>
+                                
+                                <!-- Hexágono interno decorativo -->
+                                <path d="M 33 12 L 52 12 L 61.5 30 L 52 48 L 33 48 L 23.5 30 Z" 
+                                      fill="none" 
+                                      stroke="rgba(255,255,255,0.3)" 
+                                      stroke-width="1.5"
+                                      stroke-dasharray="3,3"/>
+                                
+                                <!-- Letra K estilizada e moderna -->
+                                <g fill="white">
+                                    <!-- Barra vertical do K -->
+                                    <rect x="28" y="20" width="4" height="20" rx="2"/>
+                                    
+                                    <!-- Parte superior diagonal do K -->
+                                    <path d="M 32 27 L 52 20 L 50 24 L 35 30 Z" opacity="0.95"/>
+                                    
+                                    <!-- Parte inferior diagonal do K -->
+                                    <path d="M 32 33 L 52 40 L 50 36 L 35 30 Z" opacity="0.95"/>
+                                    
+                                    <!-- Círculo decorativo no centro -->
+                                    <circle cx="35" cy="30" r="2" fill="#3b82f6"/>
+                                </g>
+                                
+                                <!-- Partículas conectadas (efeito tech) -->
+                                <circle cx="10" cy="15" r="2.5" fill="#2563eb" opacity="0.7"/>
+                                <circle cx="75" cy="45" r="2.5" fill="#1e40af" opacity="0.7"/>
+                                <circle cx="5" cy="45" r="2" fill="#3b82f6" opacity="0.6"/>
+                                
+                                <!-- Linhas de conexão -->
+                                <line x1="10" y1="15" x2="22" y2="20" stroke="#2563eb" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+                                <line x1="75" y1="45" x2="63" y2="40" stroke="#1e40af" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+                            </g>
+                            
+                            <!-- Texto KBO com estilo moderno -->
+                            <text x="105" y="52" 
+                                  font-family="Inter, sans-serif" 
+                                  font-size="42" 
+                                  font-weight="800" 
+                                  fill="url(#logoGradient)"
+                                  letter-spacing="2">KBO</text>
+                            
+                            <!-- Barra separadora moderna -->
+                            <rect x="105" y="62" width="80" height="2" fill="url(#accentGradient)" rx="1" opacity="0.6"/>
+                            
+                            <!-- Texto SOLUÇÕES TECNOLÓGICAS -->
+                            <text x="105" y="82" 
+                                  font-family="Inter, sans-serif" 
+                                  font-size="14" 
+                                  font-weight="600" 
+                                  fill="#475569"
+                                  letter-spacing="1.5">SOLUÇÕES TECNOLÓGICAS</text>
+                            
+                            <!-- Badge "TECH" -->
+                            <g transform="translate(300, 45)">
+                                <rect x="0" y="0" width="50" height="22" rx="11" fill="url(#accentGradient)" opacity="0.9"/>
+                                <text x="25" y="15" 
+                                      font-family="Inter, sans-serif" 
+                                      font-size="11" 
+                                      font-weight="700" 
+                                      fill="white"
+                                      text-anchor="middle"
+                                      letter-spacing="0.5">TECH</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="company-info">
+                        <h1>KBO Soluções Tecnológicas</h1>
+                        <p class="tagline">ITSM, Desenvolvimento de Software, n8n e Integrações</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:kbolucoes@gmail.com">kbolucoes@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="https://wa.me/5513988302897" target="_blank" rel="noopener noreferrer">+55 (13) 98830-2897</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <a href="https://www.linkedin.com/in/kbokleber" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/kbokleber</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <button class="menu-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre a Empresa</a></li>
+                    <li><a href="#especialidades">Especialidades</a></li>
+                    <li><a href="#ferramentas">Ferramentas</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#qualificacoes">Qualificações</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-overlay"></div>
+    </nav>
+
+    <section class="trust-strip">
+        <div class="container">
+            <p class="trust-kicker">Mais de duas décadas entregando soluções em ITSM, software e integrações</p>
+            <div class="metrics-grid">
+                <div class="metric-card fade-in-up">
+                    <span class="metric-number" data-count="20" data-suffix="+">0</span>
+                    <span class="metric-label">anos de experiência no mercado</span>
+                </div>
+                <div class="metric-card fade-in-up">
+                    <span class="metric-number" data-count="8" data-suffix="+">0</span>
+                    <span class="metric-label">plataformas e stacks dominadas</span>
+                </div>
+                <div class="metric-card fade-in-up">
+                    <span class="metric-number" data-count="100" data-suffix="%">0</span>
+                    <span class="metric-label">foco em eficiência operacional</span>
+                </div>
+                <div class="metric-card fade-in-up">
+                    <span class="metric-number" data-count="24" data-suffix="x7">0</span>
+                    <span class="metric-label">compromisso com sustentação contínua</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- About Section -->
+            <section id="sobre" class="section">
+                <h2 class="section-title">Sobre a KBO Soluções Tecnológicas</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            A <span class="highlight">KBO Soluções Tecnológicas</span> é uma empresa especializada em 
+                            ITSM (IT Service Management), desenvolvimento de software e automações com n8n, 
+                            com ampla experiência em integração entre sistemas e APIs.
+                        </p>
+                        <p>
+                            Com anos de experiência no mercado, desenvolvemos e evoluímos soluções sob medida que 
+                            conectam processos, sistemas e pessoas, aumentando a eficiência operacional, reduzindo 
+                            retrabalho e melhorando a experiência dos usuários.
+                        </p>
+                        <p>
+                            Nossa abordagem combina conhecimento técnico profundo com visão estratégica, 
+                            garantindo que as soluções implementadas atendam não apenas às necessidades 
+                            imediatas, mas também aos objetivos de longo prazo da organização.
+                        </p>
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            <strong>Nossos Diferenciais:</strong>
+                        </p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Implementação e evolução de operações ITSM</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Desenvolvimento de software e soluções customizadas</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Integrações entre sistemas, APIs e webhooks</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Automações de fluxos com n8n</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Sustentação e suporte técnico especializado</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Treinamento e capacitação de equipes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Specialties Section -->
+            <section id="especialidades" class="section">
+                <h2 class="section-title">Nossas Especialidades</h2>
+                <div class="skills-grid">
+                    <div class="skill-card fade-in-up">
+                        <div class="skill-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>ITSM e Service Desk</h3>
+                        <p>
+                            Estruturação e otimização de processos ITSM com foco em incidentes, requisições, 
+                            catálogo de serviços e melhoria contínua da operação.
+                        </p>
+                    </div>
+                    <div class="skill-card fade-in-up">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Desenvolvimento de Software</h3>
+                        <p>
+                            Desenvolvimento de soluções sob medida para demandas internas e externas, 
+                            com foco em performance, escalabilidade e manutenção evolutiva.
+                        </p>
+                    </div>
+                    <div class="skill-card fade-in-up">
+                        <div class="skill-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>Automações e Integrações</h3>
+                        <p>
+                            Construção de integrações e automações com n8n, APIs, webhooks e filas, 
+                            conectando sistemas para criar fluxos mais inteligentes e produtivos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="ferramentas" class="section">
+                <h2 class="section-title">Ferramentas e Plataformas</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Ecossistema de tecnologias usadas em projetos de ITSM, desenvolvimento e automação
+                </p>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <a href="https://arandasoft.com/pt/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/aranda-logo.svg" alt="Aranda Software" class="tool-brand-logo">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.manageengine.com/br" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/manageengine-logo.svg" alt="ManageEngine" class="tool-brand-logo manageengine">
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">ServiceDesk Plus</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.sysaid.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <div class="tool-logo-badge sysaid">
+                                        <img src="./logos/sysaid-logo.svg" alt="SysAid" class="tool-brand-logo sysaid">
+                                    </div>
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">IT Service Management</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.servicenow.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/servicenow-logo.svg" alt="ServiceNow" class="tool-brand-logo servicenow">
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">Digital Workflow</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.ivanti.com/products/service-manager" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/cherwell-logo.png" alt="Cherwell" class="tool-brand-logo cherwell">
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">Configuração avançada</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://br.run2biz.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/4biz-logo-dark.png" alt="4Biz" class="tool-brand-logo fourbiz">
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">Soluções brasileiras</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://glpi-project.org/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/glpi-logo.svg" alt="GLPI" class="tool-brand-logo glpi">
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">IT Asset Management</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://n8n.io/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <div class="card h-100 shadow" style="background: white; border: 2px solid #e2e8f0; cursor: pointer; transition: transform 0.2s;">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                    <img src="./logos/n8n-logo.svg" alt="n8n" class="tool-brand-logo n8n">
+                                    <p class="mb-0 mt-2" style="color: #4a5568; font-size: 0.85rem; font-weight: 500;">Automação de workflows</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="servicos" class="section">
+                <h2 class="section-title">Serviços Oferecidos</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Implementação de ITSM e ESM</h3>
+                        <p>
+                            Estruturação completa de operações de serviços, incluindo desenho de processos, 
+                            configuração, governança e evolução contínua.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Desenvolvimento Sob Medida</h3>
+                        <p>
+                            Criação de sistemas, módulos e componentes personalizados para resolver 
+                            necessidades específicas de negócio e acelerar entregas.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>Integrações e APIs</h3>
+                        <p>
+                            Desenvolvimento de integrações entre sistemas corporativos com APIs, 
+                            webhooks e conectores para eliminar silos e retrabalho.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Automação com n8n</h3>
+                        <p>
+                            Mapeamento e automação de fluxos operacionais com n8n para reduzir tarefas 
+                            manuais, aumentar velocidade e melhorar a confiabilidade dos processos.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Migração e Modernização</h3>
+                        <p>
+                            Migração segura de dados, serviços e integrações entre plataformas, 
+                            com foco em continuidade operacional e redução de riscos.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Suporte Especializado</h3>
+                        <p>
+                            Suporte técnico especializado para resolução de problemas complexos, 
+                            manutenção preventiva e sustentação de sistemas integrados.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Qualifications Section -->
+            <section id="qualificacoes" class="section">
+                <h2 class="section-title">Qualificações do Fundador</h2>
+                
+                <div class="qualifications-header">
+                    <img src="./fotos/kleber-foto.jpg" alt="Kleber Bueno de Oliveira" class="founder-photo">
+                    <div class="founder-info">
+                        <h3>Kleber Bueno de Oliveira</h3>
+                        <p class="title">Fundador e Especialista em ITSM, Desenvolvimento e Integrações</p>
+                        <p>
+                            Com mais de 20 anos de experiência, Kleber é o fundador da KBO Soluções Tecnológicas, 
+                            unindo expertise em ITSM, desenvolvimento de software e integrações para transformar 
+                            operações de TI e processos de negócio. Sua visão estratégica e foco em resultado fazem da KBO 
+                            uma referência em soluções tecnológicas personalizadas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="qualifications-grid">
+                    <div class="qualification-card">
+                        <div class="qualification-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certificações e Formação</h3>
+                        <p>Formação técnica sólida em ITSM, desenvolvimento e arquitetura de integrações</p>
+                        <ul class="qualification-list">
+                            <li><i class="fas fa-check"></i> Especialista em ITSM com mais de 20 anos de experiência</li>
+                            <li><i class="fas fa-check"></i> Experiência prática com desenvolvimento e soluções sob medida</li>
+                            <li><i class="fas fa-check"></i> Conhecimento profundo em metodologias ITIL</li>
+                            <li><i class="fas fa-check"></i> Formação em Engenharia e Tecnologia da Informação</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <div class="qualification-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Experiência Profissional</h3>
+                        <p>Ampla experiência em projetos de grande porte</p>
+                        <ul class="qualification-list">
+                            <li><i class="fas fa-check"></i> Projetos ITSM, desenvolvimento de software e integrações</li>
+                            <li><i class="fas fa-check"></i> Gestão de equipes técnicas e projetos complexos</li>
+                            <li><i class="fas fa-check"></i> Consultoria estratégica em transformação digital</li>
+                            <li><i class="fas fa-check"></i> Desenvolvimento de soluções customizadas</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <div class="qualification-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Competências Técnicas</h3>
+                        <p>Domínio técnico em múltiplas tecnologias e plataformas</p>
+                        <ul class="qualification-list">
+                            <li><i class="fas fa-check"></i> Desenvolvimento de software e manutenção evolutiva</li>
+                            <li><i class="fas fa-check"></i> Desenvolvimento de integrações e APIs</li>
+                            <li><i class="fas fa-check"></i> Automação de processos e workflows com n8n</li>
+                            <li><i class="fas fa-check"></i> Análise e otimização de performance</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <div class="qualification-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Liderança e Gestão</h3>
+                        <p>Experiência em liderança de equipes e gestão de projetos</p>
+                        <ul class="qualification-list">
+                            <li><i class="fas fa-check"></i> Liderança de equipes técnicas multidisciplinares</li>
+                            <li><i class="fas fa-check"></i> Gestão de projetos de ITSM, software e integração</li>
+                            <li><i class="fas fa-check"></i> Treinamento e capacitação de profissionais</li>
+                            <li><i class="fas fa-check"></i> Relacionamento com clientes e stakeholders</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="depoimentos" class="section">
+                <h2 class="section-title">Resultados em ITSM, Software e Integrações</h2>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card fade-in-up">
+                        <div class="testimonial-stars" aria-label="Avaliação cinco estrelas">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "Conectamos atendimento, ERP e CRM com automações em n8n, reduzindo retrabalho manual
+                            e acelerando o tempo de resposta em toda a operação."
+                        </p>
+                        <p class="testimonial-author">Coordenação de Operações e Service Desk</p>
+                        <p class="testimonial-role">Empresa do setor financeiro</p>
+                    </article>
+                    <article class="testimonial-card fade-in-up">
+                        <div class="testimonial-stars" aria-label="Avaliação cinco estrelas">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "Além de estruturar o ITSM, evoluímos módulos de software sob medida para atender regras do negócio,
+                            com ganhos claros de produtividade e visibilidade gerencial."
+                        </p>
+                        <p class="testimonial-author">Gerência de TI e Transformação Digital</p>
+                        <p class="testimonial-role">Grupo do setor logístico</p>
+                    </article>
+                    <article class="testimonial-card fade-in-up">
+                        <div class="testimonial-stars" aria-label="Avaliação cinco estrelas">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "As integrações entre plataformas, APIs e fluxos automatizados melhoraram a experiência do usuário final
+                            e deram mais autonomia para os times técnicos sustentarem as soluções."
+                        </p>
+                        <p class="testimonial-author">Liderança de Engenharia e Operações</p>
+                        <p class="testimonial-role">Empresa de tecnologia</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Vamos Trabalhar Juntos?</h2>
+                    <p>
+                        Está buscando apoio para ITSM, desenvolvimento de software, automações com n8n 
+                        ou integrações entre sistemas? Entre em contato e vamos conversar sobre como 
+                        a KBO Soluções Tecnológicas pode ajudar sua organização.
+                    </p>
+                    <div class="contact-buttons">
+                        <a href="mailto:kbolucoes@gmail.com" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Enviar E-mail
+                        </a>
+                        <a href="https://wa.me/5513988302897" class="btn btn-secondary" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                        <a href="https://www.linkedin.com/in/kbokleber" class="btn btn-secondary" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> KBO Soluções Tecnológicas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const animatedBlocks = document.querySelectorAll('.skill-card, .service-card, .qualification-card, .testimonial-card, .metric-card');
+        if (prefersReducedMotion) {
+            animatedBlocks.forEach(block => block.classList.add('fade-in-up'));
+        } else {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animatedBlocks.forEach(block => observer.observe(block));
+        }
+
+        const animateCounter = (counter) => {
+            const target = Number(counter.dataset.count || 0);
+            const suffix = counter.dataset.suffix || '';
+            const duration = 1200;
+            const startTime = performance.now();
+
+            const updateCounter = (currentTime) => {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const value = Math.floor(progress * target);
+                counter.textContent = `${value}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = `${target}${suffix}`;
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        };
+
+        const counters = document.querySelectorAll('.metric-number[data-count]');
+        if (prefersReducedMotion) {
+            counters.forEach(counter => {
+                counter.textContent = `${counter.dataset.count}${counter.dataset.suffix || ''}`;
+            });
+        } else {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        entry.target.dataset.animated = 'true';
+                        animateCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navOverlay = document.querySelector('.nav-overlay');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+
+        if (menuToggle && navLinks && navOverlay) {
+            function toggleMenu() {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+            navOverlay.addEventListener('click', toggleMenu);
+
+            const handleNavClick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const targetId = this.getAttribute('href');
+                const menuIsOpen = navLinks.classList.contains('active');
+
+                const doScroll = () => {
+                    const targetSection = document.querySelector(targetId);
+                    if (!targetSection) return;
+
+                    const nav = document.querySelector('.nav');
+                    const navHeight = nav ? nav.offsetHeight : 0;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
+
+                    window.scroll({
+                        top: offsetPosition,
+                        left: 0,
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+                    });
+                };
+
+                if (menuIsOpen) {
+                    toggleMenu();
+                    setTimeout(doScroll, 350);
+                } else {
+                    doScroll();
+                }
+            };
+
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', handleNavClick, { passive: false });
+                link.addEventListener('touchend', handleNavClick, { passive: false });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
