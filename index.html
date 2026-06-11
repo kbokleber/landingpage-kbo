@@ -103,22 +103,16 @@
         }
 
         .company-logo {
-            width: 320px;
-            height: 130px;
-            border-radius: 20px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
-            padding: 2px;
+            flex-shrink: 0;
+            line-height: 0;
         }
 
-        .company-logo svg {
-            width: 100%;
-            height: 100%;
+        .company-logo img {
+            height: 120px;
+            width: auto;
+            display: block;
+            border-radius: 14px;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
         }
 
         .company-info h1 {
@@ -835,6 +829,10 @@
                 text-align: center;
             }
 
+            .company-logo img {
+                height: 96px;
+            }
+
             .company-info h1 {
                 font-size: 2rem;
             }
@@ -1061,93 +1059,7 @@
             <div class="header-content">
                 <div class="company-section">
                     <div class="company-logo">
-                        <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <!-- Gradiente azul uniforme -->
-                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
-                                </linearGradient>
-                                
-                                <!-- Gradiente secundário azul -->
-                                <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <!-- Design hexagonal moderno com K -->
-                            <g transform="translate(15, 25)">
-                                <!-- Hexágono principal -->
-                                <path d="M 30 5 L 55 5 L 67.5 30 L 55 55 L 30 55 L 17.5 30 Z" 
-                                      fill="url(#logoGradient)" 
-                                      stroke="url(#accentGradient)" 
-                                      stroke-width="2.5"
-                                      opacity="0.95"/>
-                                
-                                <!-- Hexágono interno decorativo -->
-                                <path d="M 33 12 L 52 12 L 61.5 30 L 52 48 L 33 48 L 23.5 30 Z" 
-                                      fill="none" 
-                                      stroke="rgba(255,255,255,0.3)" 
-                                      stroke-width="1.5"
-                                      stroke-dasharray="3,3"/>
-                                
-                                <!-- Letra K estilizada e moderna -->
-                                <g fill="white">
-                                    <!-- Barra vertical do K -->
-                                    <rect x="28" y="20" width="4" height="20" rx="2"/>
-                                    
-                                    <!-- Parte superior diagonal do K -->
-                                    <path d="M 32 27 L 52 20 L 50 24 L 35 30 Z" opacity="0.95"/>
-                                    
-                                    <!-- Parte inferior diagonal do K -->
-                                    <path d="M 32 33 L 52 40 L 50 36 L 35 30 Z" opacity="0.95"/>
-                                    
-                                    <!-- Círculo decorativo no centro -->
-                                    <circle cx="35" cy="30" r="2" fill="#3b82f6"/>
-                                </g>
-                                
-                                <!-- Partículas conectadas (efeito tech) -->
-                                <circle cx="10" cy="15" r="2.5" fill="#2563eb" opacity="0.7"/>
-                                <circle cx="75" cy="45" r="2.5" fill="#1e40af" opacity="0.7"/>
-                                <circle cx="5" cy="45" r="2" fill="#3b82f6" opacity="0.6"/>
-                                
-                                <!-- Linhas de conexão -->
-                                <line x1="10" y1="15" x2="22" y2="20" stroke="#2563eb" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
-                                <line x1="75" y1="45" x2="63" y2="40" stroke="#1e40af" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
-                            </g>
-                            
-                            <!-- Texto KBO com estilo moderno -->
-                            <text x="105" y="52" 
-                                  font-family="Inter, sans-serif" 
-                                  font-size="42" 
-                                  font-weight="800" 
-                                  fill="url(#logoGradient)"
-                                  letter-spacing="2">KBO</text>
-                            
-                            <!-- Barra separadora moderna -->
-                            <rect x="105" y="62" width="80" height="2" fill="url(#accentGradient)" rx="1" opacity="0.6"/>
-                            
-                            <!-- Texto SOLUÇÕES TECNOLÓGICAS -->
-                            <text x="105" y="82" 
-                                  font-family="Inter, sans-serif" 
-                                  font-size="14" 
-                                  font-weight="600" 
-                                  fill="#475569"
-                                  letter-spacing="1.5">SOLUÇÕES TECNOLÓGICAS</text>
-                            
-                            <!-- Badge "TECH" -->
-                            <g transform="translate(300, 45)">
-                                <rect x="0" y="0" width="50" height="22" rx="11" fill="url(#accentGradient)" opacity="0.9"/>
-                                <text x="25" y="15" 
-                                      font-family="Inter, sans-serif" 
-                                      font-size="11" 
-                                      font-weight="700" 
-                                      fill="white"
-                                      text-anchor="middle"
-                                      letter-spacing="0.5">TECH</text>
-                            </g>
-                        </svg>
+                        <img src="./logos/kbo-logo.png" alt="KBO Tech - Soluções Tecnológicas">
                     </div>
                     <div class="company-info">
                         <h1>KBO Soluções Tecnológicas</h1>
